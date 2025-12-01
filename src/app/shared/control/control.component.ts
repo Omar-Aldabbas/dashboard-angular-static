@@ -1,10 +1,13 @@
 import {
   Component,
+  contentChild,
   ElementRef,
   HostBinding,
   HostListener,
   inject,
   Input,
+  viewChild,
+  ViewChild,
   ViewEncapsulation,
 } from '@angular/core';
 
@@ -28,9 +31,13 @@ export class ControlComponent {
   @Input({ required: true }) label!: string;
 
   private el = inject(ElementRef);
+  // @ViewChild('input') private control?: ElementRef<HTMLInputElement | HTMLTextAreaElement>
 
+  private control = contentChild<ElementRef<HTMLInputElement | HTMLTextAreaElement>>('input')
   onClick() {
     console.log('they clicked me');
+    console.log('they clicked view child', this.control());
+
     console.log(this.el);
   }
 }

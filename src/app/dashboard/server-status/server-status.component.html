@@ -1,11 +1,68 @@
+<!-- <div [class.status]="currentStatus === 'online'">
+  @if (currentStatus === 'online') {
+  <p>Servers are online</p>
+  <p>All systems are operational.</p>
+  } @else if (currentStatus === 'offline') {
+  <p>Servers are offline</p>
+  <p>Functionality should be restored soon.</p>
+  } @else {
+  <p>Server status is unknown</p>
+  <p>Fetching server status failed.</p>
+  }
+</div> -->
 
-    @if (currentStatus === 'online') {
-    <p>Servers are online</p>
-    <p>All systems are operational.</p>
-    } @else if (currentStatus === 'offline') {
-    <p>Servers are offline</p>
-    <p>Functionality should be restored soon.</p>
-    } @else {
-    <p>Server status is unknown</p>
-    <p>Fetching server status failed.</p>
-    }
+<div [class]="{
+    status: true,
+    'status-online': currentStatus === 'online',
+    'status-offline': currentStatus === 'offline',
+    'status-unknown': currentStatus === 'unknown',
+}">
+  @if (currentStatus === 'online') {
+  <p>Servers are online</p>
+  <p>All systems are operational.</p>
+  } @else if (currentStatus === 'offline') {
+  <p>Servers are offline</p>
+  <p>Functionality should be restored soon.</p>
+  } @else {
+  <p>Server status is unknown</p>
+  <p>Fetching server status failed.</p>
+  }
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div *ngIf="isMobile">
+  im mobile
+  <div (click)="openList()">click me
+    <div
+      *ngIf="isOpen"
+      style="position: fixed; width: 100vh; height: 100vh; background: red;top: 0;left: 0;"
+    > 
+      <ul>
+        <li>hi</li>
+        <li>hi</li>
+        <li>hi</li>
+        <li>hi</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div *ngIf="!isMobile">im desktop</div>
