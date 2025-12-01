@@ -20,12 +20,18 @@ import { FormsModule } from '@angular/forms';
 export class NewTicketComponent {
   // @ViewChild('form') private form? : ElementRef<HTMLFormElement>;
   private form = viewChild.required<ElementRef<HTMLFormElement>>('form');
+  title: string = '';
+  request: string = '';
 
   @Output() add = new EventEmitter<{ title: string; request: string }>();
 
-  onSubmit(title: HTMLInputElement, request: HTMLTextAreaElement) {
-    this.add.emit({ title: title.value, request: request.value });
-    // this.form?.nativeElement.reset();
-    this.form().nativeElement.reset();
+  //this when using elment instance or ifk what they call it #input
+  // onSubmit(title: HTMLInputElement, request: HTMLTextAreaElement) {
+  //   this.add.emit({ title: title.value, request: request.value });
+  //   // this.form?.nativeElement.reset();
+  //   this.form().nativeElement.reset();
+  // }
+  onSubmit() {
+    this.add.emit({ title: this.title,  request: this.request })
   }
 }
